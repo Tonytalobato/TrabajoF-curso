@@ -18,3 +18,11 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+//el browserRouter es un provider
+
+
+//lo componentes que esten dentro de app van a tener acceso al 
+//router y a todos los metodos de router
+//como links, navigate etc...

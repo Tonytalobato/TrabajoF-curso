@@ -46,11 +46,23 @@ html {
 
 h1 {
   font-size: 4rem;
+  text-align: center;
+  text-decoration: none;
+  padding: 3rem 0;
+  margin: 0;
 }
 
 h2 {
   font-size: 3rem;
 }
+
+.nav-links-container a {
+  font-size: 3rem;
+  color: #7ce081;
+  text-decoration: none;
+}
+
+
 
 .sombra {
   box-shadow: 0px 9px 10px -10px rgba(0, 0, 0, 0.51);

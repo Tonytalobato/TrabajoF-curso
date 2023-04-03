@@ -7,33 +7,8 @@ import NuevoPresupuesto from "../componentes/nuevoPresupuesto";
 import FiltrarGastos from "../componentes/filtrarGasto";
 import ListarGastos from "../componentes/listarGastos/listarGastos";
 
-// const gastosFiltrado = [
-//   //crear y metert un json aquí === Mokeado
-//   {
-//     NombreGasto: "Ahorro",
-//     Cantidad: 123,
-//     categoria: "ahorro",
-//     fecha: 1680122437727,
-//     id: "1680122437727Ahorro",
-//   },
-//   {
-//     NombreGasto: "Netflix",
-//     Cantidad: 123,
-//     categoria: "suscripciones",
-//     fecha: 1680122445340,
-//     id: "1680122445340Netflix",
-//   },
-//   {
-//     NombreGasto: "Luz",
-//     Cantidad: 123,
-//     categoria: "casa",
-//     fecha: 1680122451313,
-//     id: "1680122451313Luz",
-//   },
-// ];
-
-const Presupuesto = () => {
-  const [modal, setModal] = useState(false); //en principio no se muestra
+const Presupuesto = () => { //variables de estado
+  const [modal, setModal] = useState(false); //---en principio no se muestra----
   const [presupuesto, setPresupuesto] = useState(0);
   const [gastos, setGastos] = useState([]);
   const [gastosFiltrados, setGastosFiltrados] = useState([]);
@@ -42,12 +17,14 @@ const Presupuesto = () => {
   const [disponible, setDisponible] = useState(0);
   const [gastoEditable, setGastoEditable] = useState(null);
 
+
+
   useEffect(() => {
     setDisponible(presupuesto);
   }, [presupuesto]);
 
   useEffect(() => {
-    let temporalGastos = 0; //variable auxiliar
+    let temporalGastos = 0; //-----variable auxiliar-------
     gastos.forEach((element) => {
       temporalGastos = Number(element.Cantidad) + temporalGastos;
     });
@@ -71,7 +48,7 @@ const Presupuesto = () => {
   };
   const editGasto = (editableGasto) => {
     console.log(editableGasto);
-    //se hace map de gastos y se sustituye con el mismo id
+    //------se hace map de gastos y se sustituye con el mismo id------
     const tempoGasto = gastos.map((gasto) => {
       if(gasto.id === editableGasto.id){
         return editableGasto;
@@ -79,9 +56,9 @@ const Presupuesto = () => {
         return gasto;
       }      
     }) 
-    //cambia el array por el nuevo ya editado
+    //----cambia el array por el nuevo ya editado-------
     setGastos(tempoGasto)
-    setModal(false)//cierra el modal
+    setModal(false)//----cierra el modal------
 
   };
 
@@ -92,7 +69,7 @@ const Presupuesto = () => {
     setGastos(temporalGastos);
   };
 
-  const viewModalEditarGasto = (gasto) => {//muestra el modal y lo llena
+  const viewModalEditarGasto = (gasto) => {//------muestra el modal y lo llena-------
     setModal(true);
     setGastoEditable(gasto)
   }
@@ -102,10 +79,12 @@ const Presupuesto = () => {
     setGastoEditable(null)
   }
 
+
+
   return (
     <>
       <div className="header">
-        <h1>Planificador de Gastos</h1>
+        <h1>Planificador</h1>
 
         {presupuesto ? (
           <>
@@ -124,6 +103,7 @@ const Presupuesto = () => {
       </div>
       {gastos.length > 0 && (
         <div className="gastosMain">
+          
           <FiltrarGastos setFiltro={setFiltro} />
           <div className="listado-gastos contenedor">
             {gastosFiltrados.length > 0 ? (
@@ -156,3 +136,31 @@ export default Presupuesto;
 
 //Al adicionar un gasto se debe actualizar la lista de gastos,
 //que se guardará en el componente Presupuesto, y será un array.
+
+
+// const gastosFiltrado = [
+//   //crear y metert un json aquí === Mokeado
+//   {
+//     NombreGasto: "Ahorro",
+//     Cantidad: 123,
+//     categoria: "ahorro",
+//     fecha: 1680122437727,
+//     id: "1680122437727Ahorro",
+//   },
+//   {
+//     NombreGasto: "Netflix",
+//     Cantidad: 123,
+//     categoria: "suscripciones",
+//     fecha: 1680122445340,
+//     id: "1680122445340Netflix",
+//   },
+//   {
+//     NombreGasto: "Luz",
+//     Cantidad: 123,
+//     categoria: "casa",
+//     fecha: 1680122451313,
+//     id: "1680122451313Luz",
+//   },
+// ];
+
+

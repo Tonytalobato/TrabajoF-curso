@@ -4,8 +4,6 @@ import iconoCerrar from "../img/cerrar.svg";
 
 const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
 
-    // console.log(gastoEditable);
-
   const {
     register,
     handleSubmit,
@@ -14,7 +12,7 @@ const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
   } = useForm();
 
   const handleGasto = (data) => {
-    // console.log(gastoEditable);
+    
     if(gastoEditable) {
         //edita
         data.id = gastoEditable.id
@@ -51,10 +49,7 @@ const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
         />
       </div>
 
-      <form
-        className="formulario"
-        onSubmit={handleSubmit(handleGasto)}
-      >
+      <form className="formulario" onSubmit={handleSubmit(handleGasto)}>
         <legend>{gastoEditable ? "Editar Gasto" : "Nuevo Gasto"}</legend>
         <div className="campo">
           <label htmlFor="Nombre" >Nombre gasto</label> 
@@ -68,9 +63,7 @@ const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
         </div>
         <div className="campo">
           <label>Cantidad</label>
-          <input
-            type="number"
-            placeholder="Añadir cantidad"
+          <input type="number" placeholder="Añadir cantidad"
             {...register("Cantidad", { required: true })}
           />
           {errors.Cantidad && 
@@ -91,14 +84,7 @@ const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
           {errors.categoria && 
             <p className="alerta error">Categoría requerida</p>}
         </div>
-        {/* {gastoEditable ? 
-        (<button type="submit">Añadir</button>)
-        :
-        (<button type="submit">Añadir</button>)
-        } */}
         <button type="submit">{gastoEditable ? "Editar" : "Añadir"}</button>
-
-        
       </form>
     </div>
   );
