@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-const NuevoPresupuesto = ({setPresupuesto}) => {
-
+const NuevoPresupuesto = ({ setPresupuesto }) => {
     const handlerPresupuesto = (data) => {
         // console.log(data.nuevoPresupuesto);
         setPresupuesto(data.nuevoPresupuesto)
@@ -17,6 +16,7 @@ const NuevoPresupuesto = ({setPresupuesto}) => {
                 <div className='campo'>
                     <label>Definir presupuesto</label>
                     <input 
+                    placeholder='¿Cual es su presuesto?'
                     className='nuevo-presupuesto' 
                     type="number" 
                     {...register('nuevoPresupuesto', { required: true })} />

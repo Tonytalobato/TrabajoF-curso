@@ -43,6 +43,8 @@ const Presupuesto = () => { //variables de estado
     }
   }, [filtro, gastos]);
 
+  //----------------------------------------------------------------------------------
+  
   const addGasto = (newGasto) => {
     setGastos([...gastos, newGasto]);
   };
@@ -79,12 +81,10 @@ const Presupuesto = () => { //variables de estado
     setGastoEditable(null)
   }
 
-
-
   return (
     <>
       <div className="header">
-        <h1>Planificador</h1>
+        <h1>Presupuesto</h1>
 
         {presupuesto ? (
           <>
@@ -95,12 +95,13 @@ const Presupuesto = () => { //variables de estado
               disponible={disponible}
               setGastos={setGastos}
             />
-            <NuevoGasto handleAdd={handleAdd }/>
+            <NuevoGasto handleAdd={handleAdd}/>
           </>
         ) : (
           <NuevoPresupuesto setPresupuesto={setPresupuesto} />
         )}
       </div>
+      
       {gastos.length > 0 && (
         <div className="gastosMain">
           
@@ -133,6 +134,14 @@ const Presupuesto = () => { //variables de estado
 };
 
 export default Presupuesto;
+
+
+
+
+
+
+
+
 
 //Al adicionar un gasto se debe actualizar la lista de gastos,
 //que se guardará en el componente Presupuesto, y será un array.

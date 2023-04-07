@@ -1,23 +1,19 @@
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Presupuesto from './pages/presupuesto';
-import Tareas from "./pages/tareas"
 import NavBar from './componentes/navBar/navBar';
+import Tarea from './pages/tareas';
 
 function App() {
   return (
-
   <> 
-
     <NavBar/>
 
     <Routes>
-    
       <Route path='/' element={<Presupuesto/>} /> {/* carga el componente presupuesto */}
-      <Route path="/tareas" element={<Tareas/>}/> {/* carga el componente tareas */}
+      <Route path="/tareas" element={<Tarea/>}/> 
     </Routes>
     </> 
   );
 }
-
 export default App;
