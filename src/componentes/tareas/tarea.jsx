@@ -1,15 +1,12 @@
 import { formatearFecha } from "../../helpers/helpers";
-import IconoAhorro from "../../img/icono_ahorro.svg";
-import IconoCasa from "../../img/icono_casa.svg";
-import IconoComida from "../../img/icono_comida.svg";
-import IconoGastos from "../../img/icono_gastos.svg";
+// import IconoCasa from "../../img/icono_casa.svg";
+import IconoHogar from "../../img/icono_hogar.svg"
+import IconoOcio from "../../img/icono_ocio.svg"
 
 const ListaIconos = {
-  ahorro: IconoAhorro,
-  comida: IconoComida,
-  casa: IconoCasa,
-  gastos: IconoGastos,
-  //iconos provisionales
+  casa: IconoHogar,
+  ocio: IconoOcio,
+  //iconos para cambiar (estudios y trabajo)y hogar
 };
 
 const Tarea = ({ tarea }) => {
