@@ -8,52 +8,50 @@ import IconoSalud from "../img/icono_salud.svg";
 import IconoSuscripciones from "../img/icono_suscripciones.svg";
 
 const ListaIconos = {
-    ahorro: IconoAhorro,
-    comida: IconoComida,
-    casa: IconoCasa,
-    gastos: IconoGastos,
-    ocio: IconoOcio,
-    salud: IconoSalud,
-    suscripciones: IconoSuscripciones,
+  ahorro: IconoAhorro,
+  comida: IconoComida,
+  casa: IconoCasa,
+  gastos: IconoGastos,
+  ocio: IconoOcio,
+  salud: IconoSalud,
+  suscripciones: IconoSuscripciones,
 };
 
-const Gasto = ({gasto, eliminarGasto, viewModalEditarGasto}) => {
+const Gasto = ({ gasto, eliminarGasto, viewModalEditarGasto }) => {
+  const handleEliminar = () => {
+    eliminarGasto(gasto.id);
+  };
 
- const handleEliminar = () => {
-    eliminarGasto(gasto.id)
- }
-
- const handleEditar = () => {
-    viewModalEditarGasto(gasto)
- }
+  const handleEditar = () => {
+    viewModalEditarGasto(gasto);
+  };
 
   return (
-    <div className="gasto sombra" >
-        <div className="contenido-gasto" >
-            <img src={ListaIconos[gasto.categoria]} alt="icono" />
-            <div className="descripcion-gasto" >
-                <p className="categoria">{gasto.categoria}</p>
-                <p className="nombre-gasto">{gasto.NombreGasto}</p>
-                <p className="fecha-gasto">
-                   <span> {formatearFecha(gasto.fecha)}</span>
-                </p>
-            </div>
-        </div> 
-        <p className="cantidad-gasto" >€{gasto.Cantidad}</p> 
+    <div className="gasto sombra">
+      <div className="contenido-gasto">
+        <img src={ListaIconos[gasto.categoria]} alt="icono" />
         <div className="descripcion-gasto">
-                <p>
-                    <button onClick={handleEliminar} className="delete-edit-button">
-                        Eliminar
-                    </button>
+          <p className="categoria">{gasto.categoria}</p>
+          <p className="nombre-gasto">{gasto.NombreGasto}</p>
+          <p className="fecha-gasto">
+            <span> {formatearFecha(gasto.fecha)}</span>
+          </p>
+        </div>
+      </div>
+      <p className="cantidad-gasto">€{gasto.Cantidad}</p>
+      <div className="descripcion-gasto">
+        <p>
+          <button onClick={handleEliminar} className="delete-edit-button">
+            Eliminar
+          </button>
 
-                    <button onClick={handleEditar} className="delete-edit-button">
-                        Editar
-                    </button>
-                </p>
-        </div>   
+          <button onClick={handleEditar} className="delete-edit-button">
+            Editar
+          </button>
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Gasto;
-

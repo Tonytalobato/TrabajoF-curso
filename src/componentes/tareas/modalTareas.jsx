@@ -1,25 +1,46 @@
 import { useForm } from "react-hook-form";
 import iconoCerrar from "../../img/cerrar.svg";
+import { useEffect } from "react";
 
-const Modaltareas = ({ setModalTareas, addTarea }) => {
+const Modaltareas = ({
+  setModalTareas,
+  addTarea,
+  tareaEditable,
+  editTarea,
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const handleTareas = (data) => {
-    //se pasa por evento(hijo a padre)
-    data.fecha = Date.now(); //inserta fecha
-    data.id = `${data.fecha}${data.NombreTarea}`;
-    addTarea(data);
+    if (tareaEditable) {
+      data.id = tareaEditable.id;
+      data.fecha = tareaEditable.fecha;
+      editTarea(data);
+    } else {
+      data.fecha = Date.now();
+      data.id = `${data.fecha}${data.NombreTarea}`;
+
+      addTarea(data);
+    }
     setModalTareas(false);
   };
+
+  useEffect(() => {
+    if (tareaEditable) {
+      setValue("NombreTarea", tareaEditable.NombreTarea);
+      setValue("categoria", tareaEditable.categoria);
+    }
+  }, []);
 
   return (
     <div className="modal">
       <div className="cerrar-modal">
         <img
+          title="Cerrar ventana"
           onClick={() => setModalTareas(false)}
           src={iconoCerrar}
           alt="iconoCierre"
@@ -44,8 +65,8 @@ const Modaltareas = ({ setModalTareas, addTarea }) => {
           <label>Nombre de la categoría</label>
           <select id="categoria" {...register("categoria", { required: true })}>
             <option value="">--Seleccione una aquí--</option>
-            <option value="hogar">Hogar</option>
             <option value="ocio">Ocio</option>
+            <option value="hogar">Hogar</option>
             <option value="trabajo">Trabajo</option>
             <option value="estudios">Estudios</option>
           </select>
@@ -53,8 +74,7 @@ const Modaltareas = ({ setModalTareas, addTarea }) => {
             <p className="alerta error">categoría requerida</p>
           )}
         </div>
-
-        <button type="submit">Añadir</button>
+        <button type="submit">{tareaEditable ? "Editar" : "Añadir"}</button>
       </form>
     </div>
   );

@@ -55,12 +55,13 @@ h1 {
 h2 {
   font-size: 3rem;
   text-align: center;
-  color: deeppink;
+  color: #db2777;
 }
+
 
 .nav-links-container a {
   font-size: 3rem;
-  color: #7ce081;
+  color: #db2777;
   text-decoration: none;
 }
 
@@ -283,9 +284,10 @@ button[type="submit"]:hover {
 }
 
 .delete-edit-button {
-  margin-top: 15px;/*añadido por mi*/
+  margin-right: 10px;
+  margin-top: 15px;
   border: none;
-  background-color: #7ce081;
+  background-color: #94a3b8;
   padding: 1rem;
   width: 90px;
   text-align: center;
@@ -298,7 +300,7 @@ button[type="submit"]:hover {
 }
 
 .delete-edit-button:hover {
-  background-color: #7ce081;
+  background-color: #64748b;
   cursor: pointer;
 }
 
@@ -332,7 +334,7 @@ button[type="submit"]:hover {
 }
 
 .listado-gastos h2 {
-  color: var(--gris-oscuro);
+  color: #7ce081;
   font-weight: 900;
 }
 
@@ -371,7 +373,7 @@ button[type="submit"]:hover {
 }
 
 .descripcion-gasto .categoria {
-  color: var(--gris);
+  color: black;
   font-size: 1.6rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -382,13 +384,9 @@ button[type="submit"]:hover {
 }
 
 .descripcion-gasto .nombre-gasto {
-  color: var(--gris-oscuro);
+  color: deeppink;
   font-size: 2.4rem;
   font-weight: 700;
-}
-
-.descripcion-gasto .nombre-gasto:hover {
-  cursor: pointer;
 }
 
 .descripcion-gasto .fecha-gasto {
@@ -408,16 +406,17 @@ button[type="submit"]:hover {
 }
 
 .nuevo-gasto img {
-  width: 5rem;
+  width: 6rem;
 }
 
 .nuevo-gasto img:hover {
   cursor: pointer;
+  
 }
 
 .modal {
   position: fixed;
-  background-color: rgb(0 0 0 / 0.92);
+  background-color: rgba(0, 0, 0, 0.92);
   top: 0;
   left: 0;
   right: 0;

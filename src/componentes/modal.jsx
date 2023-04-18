@@ -3,41 +3,34 @@ import { useForm } from "react-hook-form";
 import iconoCerrar from "../img/cerrar.svg";
 
 const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm();
 
   const handleGasto = (data) => {
-    
-    if(gastoEditable) {
-        //edita
-        data.id = gastoEditable.id
-        data.fecha = gastoEditable.fecha
-        editGasto(data)
-    }else {
-        //añade
-      data.fecha = Date.now()//pone la fecha exacta
-      data.id = `${data.fecha}${data.NombreGasto}`
-      addGasto(data)
-      setModal(false)
-
-    }  
-      setModal(false)//cierra el modal
-  }
+    if (gastoEditable) {
+      data.id = gastoEditable.id;
+      data.fecha = gastoEditable.fecha;
+      editGasto(data);
+    } else {
+      data.fecha = Date.now();
+      data.id = `${data.fecha}${data.NombreGasto}`;
+      addGasto(data);
+      setModal(false);
+    }
+    setModal(false);
+  };
 
   useEffect(() => {
-    if (gastoEditable)  {
-        setValue("NombreGasto", gastoEditable.NombreGasto);
-        setValue("Cantidad", gastoEditable.Cantidad);
-        setValue("categoria", gastoEditable.categoria);
-      }
-
-  }, [])//vacío para una sola vez
-  
+    if (gastoEditable) {
+      setValue("NombreGasto", gastoEditable.NombreGasto);
+      setValue("Cantidad", gastoEditable.Cantidad);
+      setValue("categoria", gastoEditable.categoria);
+    }
+  }, []);
 
   return (
     <div className="modal">
@@ -52,22 +45,27 @@ const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
       <form className="formulario" onSubmit={handleSubmit(handleGasto)}>
         <legend>{gastoEditable ? "Editar Gasto" : "Nuevo Gasto"}</legend>
         <div className="campo">
-          <label htmlFor="Nombre" >Nombre gasto</label> 
-          <input id="Nombre"
+          <label htmlFor="Nombre">Nombre gasto</label>
+          <input
+            id="Nombre"
             type="text"
             placeholder="Nombre o razón del gasto"
             {...register("NombreGasto", { required: true })}
           />
-          {errors.NombreGasto && 
-            <p className="alerta error">Nombre requerido</p>}
+          {errors.NombreGasto && (
+            <p className="alerta error">Nombre requerido</p>
+          )}
         </div>
         <div className="campo">
           <label>Cantidad</label>
-          <input type="number" placeholder="Añadir cantidad"
+          <input
+            type="number"
+            placeholder="Añadir cantidad"
             {...register("Cantidad", { required: true })}
           />
-          {errors.Cantidad && 
-            <p className="alerta error">Cantidad requerida</p>}
+          {errors.Cantidad && (
+            <p className="alerta error">Cantidad requerida</p>
+          )}
         </div>
         <div className="campo">
           <label>Categoría</label>
@@ -81,8 +79,9 @@ const Modal = ({ setModal, addGasto, gastoEditable, editGasto }) => {
             <option value="gastos">Gastos varios</option>
             <option value="suscripciones">Suscripciones</option>
           </select>
-          {errors.categoria && 
-            <p className="alerta error">Categoría requerida</p>}
+          {errors.categoria && (
+            <p className="alerta error">Categoría requerida</p>
+          )}
         </div>
         <button type="submit">{gastoEditable ? "Editar" : "Añadir"}</button>
       </form>

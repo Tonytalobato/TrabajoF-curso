@@ -1,8 +1,6 @@
 import iconoNuevoGasto from "../img/nuevo-gasto.svg";
 
-
 const NuevoGasto = ({ handleAdd }) => {
-
   return (
     <div className="nuevo-gasto">
       <img

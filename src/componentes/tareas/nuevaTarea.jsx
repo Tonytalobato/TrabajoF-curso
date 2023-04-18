@@ -1,11 +1,12 @@
 import iconoNuevoGasto from "../../img/nuevo-gasto.svg";
 
-const NuevaTarea = ({setModalTareas}) => {
+const NuevaTarea = ({hadleAdd}) => {
     return (
-        <div className="nuevo-gasto">
-            <img onClick={() => setModalTareas(true)} 
+        <div title="Agrega una tarea" className="nuevo-gasto">
+            <img onClick={hadleAdd}  data-testid="iconoNuevaTarea"
             src={iconoNuevoGasto} alt="icono(+)" />
         </div>
     )
 }
 export default NuevaTarea;
+

@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import ListarGastos from "./listarGastos";
+import ListarGastos from "./listarGastos/listarGastos";
 
 const gastosFiltrado = [
-  //crear y metert un json aquí === Mokeado
   {
     NombreGasto: "Ahorro",
     Cantidad: 123,

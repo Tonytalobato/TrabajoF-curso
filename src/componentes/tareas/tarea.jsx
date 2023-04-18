@@ -1,15 +1,25 @@
 import { formatearFecha } from "../../helpers/helpers";
-// import IconoCasa from "../../img/icono_casa.svg";
-import IconoHogar from "../../img/icono_hogar.svg"
-import IconoOcio from "../../img/icono_ocio.svg"
+import IconoHogar from "../../img/icono_hogar.svg";
+import IconoOcio from "../../img/7117783.svg";
+import IconoEstudios from "../../img/estudios.svg";
+import IconoTrabajo from "../../img/trabajo.svg";
 
 const ListaIconos = {
-  casa: IconoHogar,
+  hogar: IconoHogar,
   ocio: IconoOcio,
-  //iconos para cambiar (estudios y trabajo)y hogar
+  estudios: IconoEstudios,
+  trabajo: IconoTrabajo,
 };
 
-const Tarea = ({ tarea }) => {
+const Tarea = ({ tarea, eliminarTarea, viewModalEditarTarea }) => {
+  const handleEliminar = () => {
+    eliminarTarea(tarea.id);
+  };
+
+  const handleEditar = () => {
+    viewModalEditarTarea(tarea);
+  };
+
   return (
     <div className="gasto sombra">
       <div className="contenido-gasto">
@@ -19,14 +29,19 @@ const Tarea = ({ tarea }) => {
           <p className="nombre-gasto">{tarea.NombreTarea}</p>
           <p className="fecha-gasto">
             <span>{formatearFecha(tarea.fecha)}</span>
-            </p>
+          </p>
         </div>
       </div>
-      <p className="cantidad-gasto">ooo</p>
+      <p className="cantidad-gasto"></p>
       <div className="descripcion-gasto">
         <p>
-          <button className="delete-edit-button">
-            eliminar
+          <button onClick={handleEliminar} className="delete-edit-button">
+            Borrar
+          </button>
+        </p>
+        <p>
+          <button onClick={handleEditar} className="delete-edit-button">
+            editar
           </button>
         </p>
       </div>

@@ -1,15 +1,14 @@
-
-const DatosPresupuesto = ({ 
-  presupuesto, 
-  setPresupuesto, 
-  totalGastos, 
-  disponible, 
-  setGastos }) => {
-
-const handleReset = () => {
-  setPresupuesto(0)
-  setGastos([])
-}
+const DatosPresupuesto = ({
+  presupuesto,
+  setPresupuesto,
+  totalGastos,
+  disponible,
+  setGastos,
+}) => {
+  const handleReset = () => {
+    setPresupuesto(0);
+    setGastos([]);
+  };
 
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
